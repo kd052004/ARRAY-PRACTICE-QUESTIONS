@@ -1,26 +1,24 @@
-#include <iostream>
-using namespace std;
-int print2largest(int arr[], int n){
-    int ans= -1;
-    for(int i=0;i<n;i++){
-        if(ans<arr[i]){
-            ans=arr[i];
+class Solution {
+  public:
+    // Function returns the second
+    // largest elements
+    int getSecondLargest(vector<int> &arr) {
+        int n = arr.size();
+        int lar= arr[0];
+        int second_lar= -1;
+        if(n<2){
+            return -1;
         }
-    }
-    int secondmin= -1;
-    for(int i=0;i<n;i++){
-        if(arr[i]!=ans){
-            secondmin=max(secondmin,arr[i]);
+        for(int i=0; i<n; i++){
+            if(arr[i]> lar){
+                second_lar=lar;
+                lar=arr[i];
+            }
+            else if( arr[i]>second_lar && arr[i]< lar){
+                second_lar=arr[i];
+                ;
+            }
         }
+        return second_lar;
+        // Code Here
     }
-    return secondmin;
-}
-int main()
-{
-    int array[]={4,5,2,3,7,8};
-    int n=6;
-    cout<< print2largest(array,n);
-    
-
-    return 0;
-}
